@@ -112,7 +112,7 @@ def smart_home_manager():
             ]
             }))
     for x in user_data:
-        print(x["name"], x["value"])
+
         if x['name'] == 'boiler_temperature':
             boiler_temperature = x['value']
     try:
