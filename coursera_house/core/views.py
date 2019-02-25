@@ -61,13 +61,13 @@ class ControllerView(FormView):
         
     def form_valid(self, form):
         form_data = form.cleaned_data
-        print(form_data)
+       
         if Setting.objects.all().count() == 0:
             self.create_model(form_data)
         else:
             self.change_model(form_data)
         hot_water_target_temperature = Setting.objects.get(controller_name='hot_water_target_temperature')
         bedroom_target_temperature = Setting.objects.get(controller_name="bedroom_target_temperature").value
-        print(bedroom_target_temperature)
+
         smart_home_manager()
         return super(ControllerView, self).form_valid(form)
