@@ -16,6 +16,7 @@ class ControllerView(FormView):
     
     @staticmethod
     def get_status():
+        """ Getting information from smart home API """
         rsp = requests.get(f'{SMART_HOME_API_URL}/user.controller', headers = {
         'Authorization' : f'Bearer {SMART_HOME_ACCESS_TOKEN}'
         }
@@ -37,6 +38,7 @@ class ControllerView(FormView):
      
     @staticmethod
     def create_model(form_data):
+        """ Creating model if form was sent first time """
         bedroom = 1 if form_data['bedroom_light'] else 0
         bathroom = 1 if form_data['bathroom_light'] else 0
         hot_water = Setting(controller_name="hot_water_target_temperature", value=form_data["hot_water_target_temperature"])
@@ -51,6 +53,7 @@ class ControllerView(FormView):
          
     @staticmethod
     def change_model(form_data):
+        """ Change model values according to data from form """
         bedroom = 1 if form_data['bedroom_light'] else 0
         bathroom = 1 if form_data['bathroom_light'] else 0 
         Setting.objects.filter(pk=3).update(value=bedroom)

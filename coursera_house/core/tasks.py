@@ -7,6 +7,7 @@ from coursera_house.settings import EMAIL_RECEPIENT, EMAIL_HOST_USER
 
 
 def get_user_data():
+    """ Function that gets real-time data from smart home API """
     json_user_data = requests.get(f'{SMART_HOME_API_URL}/user.controller', headers = {
     'Authorization':f'Bearer {SMART_HOME_ACCESS_TOKEN}'
     }
@@ -17,6 +18,7 @@ def get_user_data():
     
     
 def curtains_manage(close):
+    """ Function that close or open curtains """
    value = "close" if close else "open"
    requests.post(f'{SMART_HOME_API_URL}/user.controller', headers = {
             'Authorization':f'Bearer {SMART_HOME_ACCESS_TOKEN}'
@@ -31,6 +33,7 @@ def curtains_manage(close):
             
    
 def smart_home_manager():
+    """ Function, that process and send data to the smart home API, according to the documentation """
     hot_water_target_temperature = Setting.objects.get(controller_name='hot_water_target_temperature').value
     bedroom_target_temperature = Setting.objects.get(controller_name="bedroom_target_temperature").value
     bedroom_light = Setting.objects.get(controller_name='bedroom_light').value
@@ -177,21 +180,3 @@ def smart_home_manager():
             }
             ]
             }))
-                
-          
-            
-                
-                
-            
-        
-    
-        
-    
-           
-        
-    
-    
-    
-    
-    
-    
