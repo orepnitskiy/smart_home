@@ -16,7 +16,7 @@ cold_water – cold water (true, false).
 hot_water – hot water (true, false).
 washing_machine – washing mashine string (“on” – вкл, “off” – выкл).  
 
-# Датчики (чтение):
+# Devices(Reading):
 air_conditioner – conditioner. (true, false).
 bedroom_temperature – Temperature in bedroom. Int (0 – 80).
 bedroom_light – lamp in bedroom. (true, false).
